@@ -1,18 +1,19 @@
 ## makeCacheMatrix is an object that accepts (and converts to if not) a numeric input, in this case a matrix
+## there are a number of functions that we can then access via the list() of returned objects available as needed
 makeCacheMatrix <- function(x = numeric()) {
-    ## it then sets a local variable m = NULL
+    ## it then sets a local variable m and m_inv both = NULL
     m <- NULL
     m_inv <- NULL
     
-    ## reset is a variable set by the function(y) - it sets global var x to whatever y was input. 
-    ## you can use this to reset the matrix
-    ## important to set in m_inv value to NULL using '<<-' as this resets the getinverse() return value = NULL
+## reset is a function that can be used to change the matrix values. it takes the input values y and assigns them to x
+## important to set in m_inv value to NULL using '<<-' as this sets the getinverse() return value = NULL and this is 
+## needed to ensure you do not return the inverse of an existing matrix entered
     reset <- function(y) {
         x <<- y
         m <<- NULL
         m_inv <<- NULL
     }
-    ## get is a variable set to the value of x 
+    ## get is a variable set to the value of x parsed in
     get <- function() x
     
     ## setmean is a var that takes the mean value of x and sets the var m to this
